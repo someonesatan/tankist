@@ -22,17 +22,15 @@ io.on('connection', function (socket) {
   users[socketId] = new Player(130, 130, 2, 0, socketId, io)
 
   socket.on('startMove', function (direction) {
-    users[socketId].move(direction)
+    users[socketId].startMove(direction.direction)
   });
-  
   socket.on('stopMove', function () {
-    console.log('stopMove')
+    users[socketId].stopMove()
   });
   socket.on('startRotate', function (direction) {
-    console.log(`startRotate`)
-    console.log(JSON.parse(direction))
+    users[socketId].startRotate(direction.direction)
   });
   socket.on('stopRotate', function () {
-    console.log('stopRotate')
+    users[socketId].stopRotate()
   });
 });
